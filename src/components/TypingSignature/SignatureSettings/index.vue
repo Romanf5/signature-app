@@ -16,6 +16,7 @@
 <script>
 import AppSelector from "@/components/global/AppSelector";
 import AppColorPicker from "@/components/global/AppColorPicker";
+import { mapState, mapMutations } from "vuex";
 
 export default {
     components: {
@@ -28,9 +29,18 @@ export default {
                 { text: "Handwriting", value: 1 },
                 { text: "Sans Serif", value: 2 }
             ],
-            type: false,
-            color: "#fff"
+            type: false
         }
+    },
+    computed: {
+        ...mapState("typing", [ "currentColor" ]),
+        color: {
+            get() { return this.currentColor },
+            set(color) { this.setColor(color); }
+        }
+    },
+    methods: {
+        ...mapMutations("typing", [ "setColor" ])
     }
 };
 </script>

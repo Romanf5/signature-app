@@ -10,7 +10,7 @@
             class="typing-grid--item"
             :class="classList.gridItem"
             :key="font.id"
-            :text="font.text"
+            :name="font.name"
             v-for="font in list"/>
     </div>
 </div>

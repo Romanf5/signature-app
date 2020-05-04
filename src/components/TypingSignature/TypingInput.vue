@@ -1,10 +1,28 @@
 <template>
     <div class="typing-input">
         <input placeholder="Type your signature"
+               v-model="text"
                 class="typing-input--input"
                 type="text"/>
     </div>
 </template>
+
+<script>
+import { mapState, mapMutations } from "vuex";
+
+export default {
+    computed: {
+        text: {
+            get() { return this.currentText; },
+            set(text) { this.setText(text); }
+        },
+        ...mapState("typing", [ "currentText" ])
+    },
+    methods: {
+        ...mapMutations("typing", [ "setText" ])
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .typing-input {
