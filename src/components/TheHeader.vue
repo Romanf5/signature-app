@@ -16,5 +16,6 @@ export default { components: { "app-container": AppContainer } };
 .app-header {
     padding: 20px 0;
     border-bottom: 1px solid #cecece;
+    margin-bottom: 80px;
 }
 </style>
