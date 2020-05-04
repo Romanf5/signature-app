@@ -1,0 +1,78 @@
+<template>
+<div class="typing-grid">
+    <grid-settings
+            @selectGrid="currentGrid = $event"
+            class="typing-grid--settings"/>
+    <div
+        :class="classList.grid"
+        class="typing-grid--grid">
+        <font-item
+            class="typing-grid--item"
+            :class="classList.gridItem"
+            :key="font.id"
+            :text="font.text"
+            v-for="font in list"/>
+    </div>
+</div>
+</template>
+
+<script>
+import fonts from "./fonts";
+import GridSettings from "./GridSettings";
+import FontItem from "./Item";
+
+export default {
+    components: {
+        "grid-settings": GridSettings,
+        "font-item": FontItem
+    },
+    data() {
+        return {
+            currentGrid: "grid",
+            list: fonts.serif,
+        }
+    },
+    computed: {
+        classList() {
+            return {
+                grid: { "flex flex-wrap": this.currentGrid === "grid" },
+                gridItem: {
+                    "typing-grid--item__grid": this.currentGrid === "grid",
+                    "typing-grid--item__list": this.currentGrid === "list"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.typing-grid {
+    &--settings {
+        margin-bottom: 25px;
+    }
+
+    &--item {
+        width: 100%;
+        margin-bottom: 36px;
+        transition: max-width .3s ease-in-out;
+        max-width: 100%;
+
+        &__grid {
+            max-width: calc((100% / 3) - 24px);
+            margin: {
+                left: 18px;
+                right: 18px;
+            }
+
+            &:nth-child(3n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(3n + 3) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+</style>
