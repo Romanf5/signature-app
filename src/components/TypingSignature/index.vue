@@ -4,6 +4,7 @@
         <typing-input class="typing--input"/>
         <signature-settings class="typing--settings"/>
         <typing-grid class="typing--grid"/>
+        <download-popup/>
     </div>
 </template>
 
@@ -12,13 +13,15 @@ import SignatureTitle from "@/components/global/SignatureTitle";
 import TypingInput from "./TypingInput";
 import SignatureSettings from "./SignatureSettings";
 import TypingGrid from "./Grid";
+import DownloadPopup from "./Popup";
 
 export default {
     components: {
         "signature-title": SignatureTitle,
         "typing-input": TypingInput,
         "signature-settings": SignatureSettings,
-        "typing-grid": TypingGrid
+        "typing-grid": TypingGrid,
+        "download-popup": DownloadPopup
     }
 };
 </script>
