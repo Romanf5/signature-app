@@ -7,13 +7,13 @@
             <span :style="{ color: color }">{{ text }}</span>
         </div>
         <div class="font-item--download">
-            <button>Download eSignature</button>
+            <button @click="start">Download eSignature</button>
         </div>
     </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
     props: {
@@ -27,6 +27,13 @@ export default {
             text: "currentText",
             color: "currentColor"
         })
+    },
+    methods: {
+        ...mapMutations("typing", [ "setFont", "setReady" ]),
+        start() {
+            this.setFont(this.name);
+            this.setReady(true);
+        }
     }
 }
 </script>
