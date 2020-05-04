@@ -1,3 +1,5 @@
 <template>
-    <div class="typing"></div>
+    <div class="typing">
+        Typing signature
+    </div>
 </template>

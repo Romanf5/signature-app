@@ -1,3 +1,5 @@
 <template>
-    <div class="draw"></div>
+    <div class="draw">
+        Draw signature
+    </div>
 </template>
