@@ -1,5 +1,6 @@
 @import 'normalize-scss';
 @include normalize();
 
-@import 'base';
+@import 'typo';
 @import 'grid.lib';
+@import 'base';

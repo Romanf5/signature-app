@@ -4,7 +4,7 @@
         <typing-input class="typing--input"/>
         <signature-settings class="typing--settings"/>
         <typing-grid class="typing--grid"/>
-        <download-popup/>
+        <download-popup v-if="readyForDownload"/>
     </div>
 </template>
 
@@ -14,6 +14,7 @@ import TypingInput from "./TypingInput";
 import SignatureSettings from "./SignatureSettings";
 import TypingGrid from "./Grid";
 import DownloadPopup from "./Popup";
+import { mapState } from "vuex";
 
 export default {
     components: {
@@ -22,6 +23,9 @@ export default {
         "signature-settings": SignatureSettings,
         "typing-grid": TypingGrid,
         "download-popup": DownloadPopup
+    },
+    computed: {
+        ...mapState("typing", [ "readyForDownload" ])
     }
 };
 </script>

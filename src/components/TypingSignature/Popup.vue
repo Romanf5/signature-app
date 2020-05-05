@@ -13,9 +13,6 @@
                     <span>{{ text }}</span>
                 </div>
             </div>
-            <div v-if="uri">
-                <img :src="uri" alt="">
-            </div>
             <div v-if="prepareForDownload" class="download-popup--download">
                 <button @click="download">Download eSignature</button>
             </div>
@@ -64,7 +61,6 @@ export default {
                 this.link.download = "signature.png";
                 document.body.appendChild(this.link);
             } else this.uri = uri;
-            this.uri = uri;
             this.prepareForDownload = true
         }).catch(e => console.log(e));
     }
