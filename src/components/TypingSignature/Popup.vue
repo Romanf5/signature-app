@@ -9,7 +9,7 @@
                 </svg>
             </button>
             <div ref="signature">
-                <div class="download-popup--signature">
+                <div class="download-popup--signature flex justify-center items-center">
                     <span :style="{ color: color, fontFamily: font }">{{ text }}</span>
                 </div>
             </div>
@@ -51,20 +51,28 @@ export default {
         }
     },
     mounted() {
+        const ratio = 2000 / this.$refs.signature.offsetWidth;
         html2canvas(this.$refs.signature, {
             backgroundColor: null,
+            scale: ratio,
             scrollX: 0,
             scrollY: 0
         }).then((canvas) => {
-            const uri = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            const uri = canvas.toDataURL("image/png");
             this.link = document.createElement("a");
             if(typeof this.link.download === "string") {
-                this.link.href = uri;
+                this.link.href = uri.replace("image/png", "image/octet-stream");
                 this.link.download = "signature.png";
                 document.body.appendChild(this.link);
             } else this.uri = uri;
             this.prepareForDownload = true
         }).catch(e => console.log(e));
+    },
+    created() {
+        document.body.style.overflow = "hidden";
+    },
+    beforeDestroy() {
+        document.body.style.overflow = "auto";
     }
 }
 </script>
@@ -102,7 +110,8 @@ export default {
 
     &--signature {
         text-align: center;
-        padding: 35px 10px;
+        padding: 10px;
+        height: 110px;
         border: 1px solid $appColor2;
         border-radius: 12px;
         font-size: 52px;
