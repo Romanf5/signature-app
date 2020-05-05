@@ -1,5 +1,11 @@
 <template>
     <div class="typing">
-        Typing signature
+        <typing-signature/>
     </div>
 </template>
+
+<script>
+import TypingSignature from "@/components/TypingSignature";
+
+export default { components: { "typing-signature": TypingSignature } };
+</script>

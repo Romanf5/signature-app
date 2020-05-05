@@ -1,5 +1,5 @@
 <template>
     <div class="main">
-        main page
+        <router-link :to="{ path: 'typing' }">Typing</router-link>
     </div>
 </template>
