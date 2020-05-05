@@ -1,6 +1,7 @@
 <template>
 <div class="typing-grid">
     <grid-settings
+            :grid-type="currentGrid"
             @selectGrid="currentGrid = $event"
             class="typing-grid--settings"/>
     <div
