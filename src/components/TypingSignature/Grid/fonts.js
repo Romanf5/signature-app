@@ -2,7 +2,7 @@ import { v4 as uid  } from "uuid";
 
 const fonts = {
     serif: [
-        "Manropes",
+        "Manrope",
         "DM Sans",
         "Karla",
         "Open Sans",

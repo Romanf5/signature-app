@@ -4,7 +4,7 @@
             <span>{{ name }}</span>
         </div>
         <div class="font-item--text">
-            <span :style="{ color: color }">{{ text }}</span>
+            <span :style="{ color: color, fontFamily: `${name}` }">{{ text }}</span>
         </div>
         <div class="font-item--download">
             <button @click="start">Download eSignature</button>

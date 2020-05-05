@@ -10,7 +10,7 @@
             </button>
             <div ref="signature">
                 <div class="download-popup--signature">
-                    <span>{{ text }}</span>
+                    <span :style="{ color: color, fontFamily: font }">{{ text }}</span>
                 </div>
             </div>
             <div v-if="prepareForDownload" class="download-popup--download">
