@@ -1,5 +1,10 @@
 <template>
     <div class="main">
-        <router-link :to="{ path: 'typing' }">Typing</router-link>
+        <div>
+            <router-link :to="{ path: 'typing' }">Typing signature</router-link>
+        </div>
+        <div>
+            <router-link :to="{ path: 'draw' }">Draw signature</router-link>
+        </div>
     </div>
 </template>
