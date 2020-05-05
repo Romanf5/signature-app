@@ -3,6 +3,7 @@
         <div class="flex">
             <div class="signature-settings--type">
                 <app-selector
+                     placeholder="Select type"
                      v-model="type"
                     :list="typeList"/>
             </div>
@@ -26,21 +27,24 @@ export default {
     data() {
         return {
             typeList: [
-                { text: "Handwriting", value: 1 },
-                { text: "Sans Serif", value: 2 }
-            ],
-            type: false
+                { text: "Handwriting", value: "hands" },
+                { text: "Sans Serif", value: "serif" }
+            ]
         }
     },
     computed: {
-        ...mapState("typing", [ "currentColor" ]),
+        ...mapState("typing", [ "currentColor", "fontType" ]),
         color: {
             get() { return this.currentColor },
             set(color) { this.setColor(color); }
+        },
+        type: {
+            get() { return this.typeList.find(item => item.value === this.fontType) || null; },
+            set(type) { this.setType(type.value); }
         }
     },
     methods: {
-        ...mapMutations("typing", [ "setColor" ])
+        ...mapMutations("typing", [ "setColor", "setType" ])
     }
 };
 </script>

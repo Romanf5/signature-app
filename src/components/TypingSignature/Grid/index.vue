@@ -4,6 +4,7 @@
             @selectGrid="currentGrid = $event"
             class="typing-grid--settings"/>
     <div
+        v-if="list"
         :class="classList.grid"
         class="typing-grid--grid">
         <font-item
@@ -20,6 +21,7 @@
 import fonts from "./fonts";
 import GridSettings from "./GridSettings";
 import FontItem from "./Item";
+import { mapState } from "vuex";
 
 export default {
     components: {
@@ -29,10 +31,10 @@ export default {
     data() {
         return {
             currentGrid: "grid",
-            list: fonts.serif,
         }
     },
     computed: {
+        ...mapState("typing", { type: "fontType" }),
         classList() {
             return {
                 grid: { "flex flex-wrap": this.currentGrid === "grid" },
@@ -41,6 +43,9 @@ export default {
                     "typing-grid--item__list": this.currentGrid === "list"
                 }
             }
+        },
+        list() {
+            return this.type ? fonts[this.type] : null;
         }
     }
 }

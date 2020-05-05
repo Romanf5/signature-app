@@ -1,6 +1,7 @@
 export default {
-    currentText: "Sophie Moore",
+    currentText: "",
     currentColor: "#0B2034",
     currentFont: "",
-    readyForDownload: false
+    readyForDownload: false,
+    fontType: null
 }

@@ -3,7 +3,7 @@
         <signature-title class="typing--title">Type your signature</signature-title>
         <typing-input class="typing--input"/>
         <signature-settings class="typing--settings"/>
-        <typing-grid class="typing--grid"/>
+        <typing-grid v-if="readyForSelectFont" class="typing--grid"/>
         <download-popup v-if="readyForDownload"/>
     </div>
 </template>
@@ -25,7 +25,17 @@ export default {
         "download-popup": DownloadPopup
     },
     computed: {
-        ...mapState("typing", [ "readyForDownload" ])
+        ...mapState("typing", {
+            ready: "readyForDownload",
+            type: "fontType",
+            text: "currentText"
+        }),
+        readyForDownload() {
+            return this.ready && this.text && this.type;
+        },
+        readyForSelectFont() {
+            return this.type && this.text;
+        }
     }
 };
 </script>

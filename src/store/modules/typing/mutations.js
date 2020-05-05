@@ -10,5 +10,8 @@ export default {
     },
     setReady(state, isReady) {
         state.readyForDownload = isReady;
+    },
+    setType(state, type) {
+        state.fontType = type;
     }
 }

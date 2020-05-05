@@ -21,12 +21,29 @@ const fonts = {
         "Manjari",
         "Thasadith"
     ],
-    hands: []
+    hands: [
+        "Sacramento",
+        "Kalam",
+        "La Belle Aurore",
+        "Gochi Hand",
+        "Caveat",
+        "Marck Script",
+        "Handlee",
+        "Nothing You Could Do",
+        "Covered By Your Grace",
+        "Just Another Hand",
+        "Shadows Into Light",
+        "Bad Script",
+        "Yellowtail",
+        "Dancing Script",
+        "Great Vibes",
+        "Qwigley",
+        "Bilbo Swash Caps",
+        "Stalemate"
+    ]
 };
 
-for(let i = 0; i < 18; i++) fonts.hands.push({ text: "Sophie Moore", id: uid() });
-
 export default {
-    ...fonts,
+    hands: fonts.hands.map((name) => ({ name, id: uid() })),
     serif: fonts.serif.map((name) => ({ name, id: uid() }))
 }
