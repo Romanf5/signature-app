@@ -7,15 +7,17 @@
             <span :style="{ color: color, fontFamily: `${name}` }">{{ text }}</span>
         </div>
         <div class="font-item--download">
-            <button @click="start">Download eSignature</button>
+            <download-button @click="start"/>
         </div>
     </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import DownloadButton from "@/components/global/DownloadButton";
 
 export default {
+    components: { "download-button": DownloadButton },
     props: {
         name: {
             type: String,

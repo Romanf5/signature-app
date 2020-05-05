@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div v-if="prepareForDownload" class="download-popup--download">
-                <button @click="download">Download eSignature</button>
+                <download-button @click="download"/>
             </div>
         </div>
     </div>
@@ -23,8 +23,10 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import html2canvas from "html2canvas";
+import DownloadButton from "@/components/global/DownloadButton";
 
 export default {
+    components: { "download-button": DownloadButton },
     data() {
         return {
             prepareForDownload: false,
