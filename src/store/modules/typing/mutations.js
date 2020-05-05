@@ -13,5 +13,12 @@ export default {
     },
     setType(state, type) {
         state.fontType = type;
+    },
+    refresh(state) {
+        state.currentFont = "";
+        state.currentColor = "#0B2034";
+        state.currentText = "";
+        state.fontType = null;
+        state.readyForDownload = false;
     }
 }
