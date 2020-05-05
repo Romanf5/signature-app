@@ -55,6 +55,7 @@ export default {
     &--text {
         margin-bottom: 20px;
         font-size: $appFontSize4;
+        white-space: nowrap;
     }
 }
 </style>
