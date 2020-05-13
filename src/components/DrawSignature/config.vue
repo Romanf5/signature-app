@@ -21,7 +21,7 @@
                 <span>Angle</span>
             </div>
             <div class="draw-configs--config-body">
-                <input min="0" max="360" step="20" type="range">
+                <input min="0" max="360" step="5" v-model="angle" type="range">
             </div>
         </div>
     </div>

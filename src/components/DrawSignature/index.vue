@@ -1,8 +1,12 @@
 <template>
     <div class="draw">
         <signature-title class="draw--title">Draw your eSiganture here</signature-title>
-        <draw-canvas class="draw--canvas"/>
+        <draw-canvas ref="canvas" class="draw--canvas"/>
         <draw-config class="draw--config"/>
+        <div class="draw--controls">
+            <button @click="$refs.canvas.clearCanvas(true)">clear</button>
+            <button @click="$refs.canvas.print()">print</button>
+        </div>
     </div>
 </template>
 
