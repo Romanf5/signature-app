@@ -11,5 +11,7 @@
     text-align: center;
     color: $appColor1;
     font-size: $titleFontSize;
+
+    h1 { font-size: 1em; }
 }
 </style>
