@@ -5,11 +5,6 @@
     </div>
     <div class="vc-chrome-body">
       <div class="vc-chrome-controls">
-        <div class="vc-chrome-color-wrap">
-          <div :aria-label="`current color is ${colors.hex}`" class="vc-chrome-active-color" :style="{background: activeColor}"></div>
-          <checkboard v-if="!disableAlpha"></checkboard>
-        </div>
-
         <div class="vc-chrome-sliders">
           <div class="vc-chrome-hue-wrap">
             <hue v-model="colors" @change="childChange"></hue>
@@ -19,6 +14,14 @@
           </div>
         </div>
       </div>
+        <div class="vc-chrome-color-wrap flex items-center">
+            <div :aria-label="`current color is ${colors.hex}`"
+                 class="vc-chrome-color-wrap__color"
+                 :style="{background: activeColor}"></div>
+            <div class="vc-chrome-color-wrap__text">
+                {{ colors.hex }}
+            </div>
+        </div>
     </div>
   </div>
 </template>
@@ -28,7 +31,6 @@ import colorMixin from './colorMixin'
 import saturation from './common/Saturation.vue'
 import hue from './common/Hue.vue'
 import alpha from './common/Alpha.vue'
-import checkboard from './common/Checkboard.vue'
 
 export default {
   name: 'color-picker',
@@ -46,8 +48,7 @@ export default {
   components: {
     saturation,
     hue,
-    alpha,
-    checkboard
+    alpha
   },
   data () {
     return {
@@ -122,36 +123,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .vc-chrome {
   background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 0 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.3);
+  border-radius: 7px;
+  border: 1px solid $appColor4;
   box-sizing: initial;
-  width: 225px;
+  width: 240px;
   font-family: Menlo;
   background-color: #fff;
 }
 .vc-chrome-controls {
   display: flex;
-}
-.vc-chrome-color-wrap {
-  position: relative;
-  width: 36px;
-}
-.vc-chrome-active-color {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  overflow: hidden;
-  z-index: 1;
-}
-.vc-chrome-color-wrap .vc-checkerboard {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  background-size: auto;
 }
 .vc-chrome-sliders {
   flex: 1;
@@ -200,18 +183,19 @@ export default {
   height: 10px;
 }
 .vc-chrome-hue-wrap .vc-hue {
-  border-radius: 2px;
+  border-radius: 10px;
 }
 .vc-chrome-alpha-wrap .vc-alpha-gradient {
-  border-radius: 2px;
+  border-radius: 10px;
 }
 .vc-chrome-hue-wrap .vc-hue-picker, .vc-chrome-alpha-wrap .vc-alpha-picker {
-  width: 12px;
-  height: 12px;
-  border-radius: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
   transform: translate(-6px, -2px);
-  background-color: rgb(248, 248, 248);
+  background-color: transparent;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  border: 3px solid #fff;
 }
 .vc-chrome-body {
   padding: 16px 16px 12px;
@@ -219,7 +203,7 @@ export default {
 }
 .vc-chrome-saturation-wrap {
   width: 100%;
-  padding-bottom: 55%;
+  padding-bottom: 80%;
   position: relative;
   border-radius: 2px 2px 0 0;
   overflow: hidden;
@@ -248,16 +232,28 @@ export default {
   display: block;
   margin-top: 12px;
 }
-
-.vc-chrome__disable-alpha .vc-chrome-active-color {
-  width: 18px;
-  height: 18px;
-}
-.vc-chrome__disable-alpha .vc-chrome-color-wrap {
+.vc-chrome__disable-alpha {
   width: 30px;
 }
 .vc-chrome__disable-alpha .vc-chrome-hue-wrap {
   margin-top: 4px;
   margin-bottom: 4px;
+}
+
+.vc-chrome-color-wrap {
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: 1px solid $appColor5;
+    border-radius: 180px;
+    font-family: $mainFontBook;
+    font-size: $appFontSize2;
+
+    &__color {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        margin-right: 7px;
+        color: $appColor6;
+    }
 }
 </style>

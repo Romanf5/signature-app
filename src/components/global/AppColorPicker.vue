@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { Chrome } from "vue-color";
+import ColorPicker from "@/components/colorPicker";
 import ClickOutside from 'vue-click-outside';
 
 export default {
@@ -27,7 +27,7 @@ export default {
             default: "#fff"
         }
     },
-    components: { "color-picker": Chrome },
+    components: { "color-picker": ColorPicker },
     data() {
         return { isOpen: false };
     },
