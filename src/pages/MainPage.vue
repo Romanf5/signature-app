@@ -6,5 +6,8 @@
         <div>
             <router-link :to="{ path: 'draw' }">Draw signature</router-link>
         </div>
+        <div>
+            <router-link :to="{ path: 'color-picker' }">Color picker development</router-link>
+        </div>
     </div>
 </template>
