@@ -3,9 +3,13 @@
         <signature-title class="draw--title">Draw your eSiganture here</signature-title>
         <draw-canvas ref="canvas" class="draw--canvas"/>
         <draw-config class="draw--config"/>
-        <div class="draw--controls">
-            <button @click="$refs.canvas.clearCanvas(true)">clear</button>
-            <button @click="$refs.canvas.print()">print</button>
+        <div class="draw--controls flex justify-center">
+            <div class="draw--controls-control">
+                <download-button @click="$refs.canvas.clearCanvas(true)">Clear and draw again</download-button>
+            </div>
+            <div class="draw--controls-control">
+                <download-button @click="$refs.canvas.print()" reverse/>
+            </div>
         </div>
     </div>
 </template>
@@ -14,12 +18,14 @@
 import SignatureTitle from "@/components/global/SignatureTitle";
 import DrawCanvas from "./DrawCanvas";
 import DrawConfig from "./config";
+import DownloadButton from "@/components/global/DownloadButton"
 
 export default {
     components: {
         "signature-title": SignatureTitle,
         "draw-canvas": DrawCanvas,
-        "draw-config": DrawConfig
+        "draw-config": DrawConfig,
+        "download-button": DownloadButton
     }
 };
 </script>
@@ -35,6 +41,23 @@ export default {
 
     &--canvas {
         margin-bottom: 25px;
+    }
+
+    &--config {
+        padding-bottom: 40px;
+        border-bottom: 1px solid $appColor4;
+    }
+
+    &--controls {
+        margin-top: 30px;
+
+        &-control {
+            min-width: 305px;
+
+            &:not(:last-child) {
+                margin-right: 25px;
+            }
+        }
     }
 }
 </style>
