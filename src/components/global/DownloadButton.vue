@@ -35,10 +35,22 @@ export default {
     background-color: $mainBgColor;
     border-radius: 50px;
     cursor: pointer;
+    font-family: $mainFontBook;
+    transition: color .3s ease-in-out, background-color .3s ease-in-out;
+
+    &:hover:not(&__reverse) {
+        color: $mainBgColor;
+        background-color: $appColor8;
+    }
 
     &__reverse {
         color: $mainBgColor;
         background-color: $appColor8;
+
+        &:hover {
+            background-color: $mainBgColor;
+            color: $appColor8;
+        }
     }
 }
 </style>

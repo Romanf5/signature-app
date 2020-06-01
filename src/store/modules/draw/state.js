@@ -1,5 +1,5 @@
 export default {
-    color: "#0B2034",
+    color: "#000000",
     width: 3,
     angle: 0
 };

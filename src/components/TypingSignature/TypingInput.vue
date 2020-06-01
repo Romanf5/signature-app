@@ -38,6 +38,10 @@ export default {
         background-color: $mainBgColor;
         color: $appColor3;
         font-size: $appFontSize1;
+        font-family: $mainFontBook;
+        @include placeholder() {
+            font-family: $mainFontBook;
+        }
     }
 }
 </style>

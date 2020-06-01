@@ -31,3 +31,22 @@
         font-size: $fMax;
     }
 }
+
+@mixin placeholder {
+    ::-webkit-input-placeholder {
+        opacity: 1!important;
+        @content
+    }
+    ::-moz-placeholder {
+        opacity: 1!important;
+        @content
+    }
+    :-moz-placeholder {
+        opacity: 1!important;
+        @content
+    }
+    :-ms-input-placeholder {
+        opacity: 1!important;
+        @content
+    }
+}

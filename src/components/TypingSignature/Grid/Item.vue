@@ -64,6 +64,12 @@ export default {
     border-radius: 14px;
     border: 1px solid $appColor2;
 
+    &--download {
+        width: 100%;
+        max-width: 260px;
+        margin-left: 5px;
+    }
+
     &--inner {
         @include max-w(560px) {
             flex-direction: column;
