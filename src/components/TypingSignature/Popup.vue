@@ -8,8 +8,8 @@
                     <path d="M21 21L1 1" stroke="#526172" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <div ref="signature">
-                <div class="download-popup--signature flex justify-center items-center">
+            <div class="download-popup--signature">
+                <div ref="signature" class="download-popup--signature-inner flex justify-center items-center">
                     <span :style="{ color: color, fontFamily: font }">{{ text }}</span>
                 </div>
             </div>
@@ -98,13 +98,19 @@ export default {
 
     &--signature {
         text-align: center;
-        padding: 10px;
         height: 110px;
         border: 1px solid $appColor2;
         border-radius: 12px;
         font-size: 52px;
         margin-bottom: 15px;
         background-color: $mainBgColor;
+        overflow: hidden;
+
+        &-inner {
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &--download {

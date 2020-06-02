@@ -1,6 +1,7 @@
 <template>
 <div class="typing-grid">
     <grid-settings
+            v-if="breakPoint >= 1024"
             :grid-type="currentGrid"
             @selectGrid="currentGrid = $event"
             class="typing-grid--settings"/>
@@ -13,6 +14,7 @@
             :class="classList.gridItem"
             :key="font.id"
             :name="font.name"
+            :grid-display="currentGrid"
             v-for="font in list"/>
     </div>
 </div>
@@ -31,7 +33,8 @@ export default {
     },
     data() {
         return {
-            currentGrid: "grid",
+            grid: "grid",
+            breakPoint: 0
         }
     },
     computed: {
@@ -47,6 +50,16 @@ export default {
         },
         list() {
             return this.type ? fonts[this.type] : null;
+        },
+        currentGrid: {
+            get() { return this.breakPoint < 1024 ? "list" : this.grid; },
+            set(val) { this.grid = val; }
+        }
+    },
+    created() {
+        this.breakPoint = window.innerWidth;
+        window.onresize = () => {
+            this.breakPoint = window.innerWidth;
         }
     }
 }

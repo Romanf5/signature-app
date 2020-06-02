@@ -5,23 +5,33 @@
                 <span>Color</span>
             </div>
             <div class="draw-configs--config-body">
-                <app-color-picker v-model="color"/>
+                <app-color-picker class="draw-configs--color-picker" v-model="color"/>
             </div>
         </div>
         <div class="draw-configs--config">
             <div class="draw-configs--config-title">
                 <span>Width</span>
             </div>
-            <div class="draw-configs--config-body">
-                <input min="1" max="10" step="1" v-model="width" type="range">
+            <div class="draw-configs--config-body draw-configs--config-body__picker">
+                <range-picker
+                        min="1"
+                        max="10"
+                        step="1"
+                        v-model="width"
+                        class="range-picker" />
             </div>
         </div>
         <div class="draw-configs--config">
             <div class="draw-configs--config-title">
                 <span>Angle</span>
             </div>
-            <div class="draw-configs--config-body">
-                <input min="0" max="360" step="5" v-model="angle" type="range">
+            <div class="draw-configs--config-body draw-configs--config-body__picker">
+                <range-picker
+                        min="0"
+                        max="360"
+                        step="5"
+                        v-model="angle"
+                        class="range-picker"/>
             </div>
         </div>
     </div>
@@ -29,10 +39,15 @@
 
 <script>
 import AppColorPicker from "@/components/global/AppColorPicker";
+import RangeSlider from "vue-range-slider";
 import { mapState, mapMutations } from "vuex";
+import "vue-range-slider/dist/vue-range-slider.scss";
 
 export default {
-    components: { "app-color-picker": AppColorPicker },
+    components: {
+        "app-color-picker": AppColorPicker,
+        "range-picker": RangeSlider
+    },
     computed: {
         ...mapState("draw", {
             currentColor: "color",
@@ -73,7 +88,34 @@ export default {
             display: flex;
             align-items: center;
             margin-top: 10px;
+
+            &__picker {
+                margin-top: 25px;
+            }
         }
+    }
+
+    &--color-picker {
+        width: 170px;
+    }
+}
+
+.range-picker {
+    /deep/ .range-slider-fill {
+        background-color: transparent;
+    }
+
+    /deep/ .range-slider-rail {
+        height: 6px;
+        border-radius: 80px;
+        background-color: $appColor4;
+    }
+
+    /deep/ .range-slider-knob {
+        background-color: $appColor8;
+        box-shadow: none;
+        width: 18px;
+        height: 18px;
     }
 }
 </style>

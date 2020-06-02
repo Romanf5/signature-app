@@ -10,7 +10,7 @@
 .signature-title {
     text-align: center;
     color: $appColor1;
-    font-size: $titleFontSize;
+    font-size: calcFluidFontSize(32, 48, 375, 2000);
 
     h1 { font-size: 1em; }
 }

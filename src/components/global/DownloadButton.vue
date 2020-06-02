@@ -1,6 +1,30 @@
 <template>
-    <button @click="$emit('click')" class="download-button">Download eSignature</button>
+    <button @click="$emit('click')"
+            :class="classList"
+            class="download-button">
+        <slot>
+            Download eSignature
+        </slot>
+    </button>
 </template>
+
+<script>
+export default {
+    props: {
+        reverse: {
+            type: Boolean,
+            default: false
+        }
+    },
+    computed: {
+        classList() {
+            return {
+                "download-button__reverse": this.reverse
+            };
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .download-button {
@@ -11,5 +35,10 @@
     background-color: $mainBgColor;
     border-radius: 50px;
     cursor: pointer;
+
+    &__reverse {
+        color: $mainBgColor;
+        background-color: $appColor8;
+    }
 }
 </style>

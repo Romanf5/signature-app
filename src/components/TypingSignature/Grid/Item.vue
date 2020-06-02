@@ -3,11 +3,13 @@
         <div class="font-item--name">
             <span>{{ name }}</span>
         </div>
-        <div class="font-item--text">
-            <span :style="{ color: color, fontFamily: `${name}` }">{{ text }}</span>
-        </div>
-        <div class="font-item--download">
-            <download-button @click="start"/>
+        <div :class="classList.grid" class="flex font-item--inner">
+            <div class="font-item--text">
+                <span :style="{ color: color, fontFamily: `${name}` }">{{ text }}</span>
+            </div>
+            <div class="font-item--download">
+                <download-button @click="start"/>
+            </div>
         </div>
     </div>
 </template>
@@ -22,13 +24,28 @@ export default {
         name: {
             type: String,
             required: true
+        },
+        gridDisplay: {
+            type: String,
+            required: true,
+            validator(type) {
+                return [ "grid", "list" ].includes(type)
+            }
         }
     },
     computed: {
         ...mapState("typing", {
             text: "currentText",
             color: "currentColor"
-        })
+        }),
+        classList() {
+            return {
+                grid: {
+                    "flex-col": this.gridDisplay === "grid",
+                    "justify-between items-center": this.gridDisplay === "list"
+                }
+            }
+        }
     },
     methods: {
         ...mapMutations("typing", [ "setFont", "setReady" ]),
@@ -47,6 +64,13 @@ export default {
     border-radius: 14px;
     border: 1px solid $appColor2;
 
+    &--inner {
+        @include max-w(560px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
     &--name {
         margin-bottom: 20px;
         font-size: $appFontSize3;
@@ -55,7 +79,6 @@ export default {
     &--text {
         margin-bottom: 20px;
         font-size: $appFontSize4;
-        white-space: nowrap;
     }
 }
 </style>
