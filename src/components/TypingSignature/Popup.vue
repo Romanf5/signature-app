@@ -85,6 +85,14 @@ export default {
         padding: 65px 70px 55px;
         border-radius: 30px;
         box-shadow:  0 10px 44px rgba(11, 32, 52, .11), 0 4px 24px rgba(0, 163, 250, .09);
+
+        @include max-w(690px) {
+            padding: 65px 20px 55px;
+        }
+
+        @include max-w(450px) {
+            padding: 65px 10px 55px;
+        }
     }
 
     &--close {
@@ -110,6 +118,10 @@ export default {
             padding: 10px;
             width: 100%;
             height: 100%;
+
+            @include max-w(450px) {
+                padding: 5px;
+            }
         }
     }
 

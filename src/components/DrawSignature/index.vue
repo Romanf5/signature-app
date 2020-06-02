@@ -51,11 +51,23 @@ export default {
     &--controls {
         margin-top: 30px;
 
+        @include max-w(690px) {
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
         &-control {
             min-width: 305px;
 
             &:not(:last-child) {
                 margin-right: 25px;
+
+                @include max-w(690px) {
+                    margin: {
+                        right: 0;
+                        bottom: 20px;
+                    };
+                }
             }
         }
     }

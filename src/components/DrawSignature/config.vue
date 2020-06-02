@@ -5,7 +5,10 @@
                 <span>Color</span>
             </div>
             <div class="draw-configs--config-body">
-                <app-color-picker class="draw-configs--color-picker" v-model="color"/>
+                <app-color-picker
+                        disable-alpha
+                        class="draw-configs--color-picker"
+                        v-model="color"/>
             </div>
         </div>
         <div class="draw-configs--config">
@@ -73,9 +76,21 @@ export default {
 
 <style lang="scss" scoped>
 .draw-configs {
+    @include max-w(690px) {
+        flex-wrap: wrap;
+    }
+
     &--config {
         &:not(:last-child) {
             margin-right: 35px;
+        }
+
+        @include max-w(690px) {
+            &:first-child {
+                order: 2;
+                margin-top: 20px;
+                margin-right: 0;
+            }
         }
 
         &-title {

@@ -5,6 +5,9 @@
             @mouseup="stopDraw"
             @mouseout="stopDraw"
             @mousemove="draw"
+            @touchstart="startDraw"
+            @touchend="stopDraw"
+            @touchmove="draw"
             ref="canvas"
             class="draw-canvas--canvas"></canvas>
     </div>
@@ -33,7 +36,7 @@ export default {
     computed: { ...mapState("draw", [ "color", "width", "angle" ]) },
     watch: {
         angle(angle) {
-            this.rotate(angle);
+            this.rotate(-angle);
         },
         color(color) {
             this.ctx.strokeStyle = color;
@@ -60,8 +63,9 @@ export default {
             let [ x, y ] = currentCords;
             this.cords.list.push({ x, y, start: true });
         },
-        stopDraw() {
+        stopDraw(e) {
             this.isDrawing = false;
+            e.preventDefault();
         },
         draw(e) {
             if(this.isDrawing) {
@@ -74,6 +78,7 @@ export default {
                 this.ctx.closePath();
                 this.ctx.stroke();
             }
+            e.preventDefault();
         },
         redraw() {
             this.clearCanvas();
@@ -96,9 +101,11 @@ export default {
             this.ctx.stroke();
         },
         calculateCords(e) {
-            const { offsetLeft, offsetTop } = this.$refs.canvas;
+            const { offsetLeft, offsetTop } = this.$refs.canvas,
+                clientX = e.clientX ? e.clientX : e.targetTouches[0].clientX,
+                clientY = e.clientY ? e.clientY : e.targetTouches[0].clientY;
             [ this.cords.prevX, this.cords.prevY ] = [ this.cords.x, this.cords.y ];
-            [ this.cords.x, this.cords.y ] = [ e.clientX - offsetLeft, e.clientY - offsetTop ];
+            [ this.cords.x, this.cords.y ] = [ clientX - offsetLeft, clientY - offsetTop ];
             return {
                 prev: [ this.cords.prevX, this.cords.prevY ],
                 current: [ this.cords.x, this.cords.y ]
