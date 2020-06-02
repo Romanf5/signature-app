@@ -1,5 +1,6 @@
 module.exports = {
     css: {
+        extract: true,
         loaderOptions: {
             scss: {
                 prependData: `

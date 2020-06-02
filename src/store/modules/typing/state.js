@@ -1,7 +1,7 @@
 export default {
     currentText: "",
-    currentColor: "#0B2034",
+    currentColor: "#000000",
     currentFont: "",
     readyForDownload: false,
-    fontType: null
+    fontType: "hands"
 }

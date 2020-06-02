@@ -1,5 +1,5 @@
 <template>
-  <div role="application" aria-label="Chrome color picker" :class="['vc-chrome', disableAlpha ? 'vc-chrome__disable-alpha' : '']">
+  <div role="application" aria-label="Chrome color picker" class="vc-chrome">
     <div class="vc-chrome-saturation-wrap">
       <saturation v-model="colors" @change="childChange"></saturation>
     </div>
@@ -19,7 +19,7 @@
                  class="vc-chrome-color-wrap__color"
                  :style="{background: activeColor}"></div>
             <div class="vc-chrome-color-wrap__text">
-                {{ colors.hex }}
+                {{ disableAlpha ? colors.hex : colors.hex8 }}
             </div>
         </div>
     </div>
@@ -132,6 +132,7 @@ export default {
   width: 240px;
   font-family: Menlo;
   background-color: #fff;
+  box-shadow: 0px 6px 10px rgba(27, 57, 85, 0.06), 0px 2px 8px rgba(0, 163, 250, 0.08);
 }
 .vc-chrome-controls {
   display: flex;
@@ -231,13 +232,6 @@ export default {
   text-align: center;
   display: block;
   margin-top: 12px;
-}
-.vc-chrome__disable-alpha {
-  width: 30px;
-}
-.vc-chrome__disable-alpha .vc-chrome-hue-wrap {
-  margin-top: 4px;
-  margin-bottom: 4px;
 }
 
 .vc-chrome-color-wrap {

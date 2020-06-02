@@ -98,6 +98,7 @@ $settings-border: 1px solid $appColor4;
             color: $appColor2;
             font-size: $appFontSize2;
             margin-right: 10px;
+            font-family: $mainFontBook;
 
             @include min-w(560px) {
                 display: none;

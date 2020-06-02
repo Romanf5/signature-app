@@ -11,7 +11,7 @@
         <div
             :class="classList.palette"
             class="color-picker--palette">
-            <color-picker v-model="color"/>
+            <color-picker :disable-alpha="disableAlpha" v-model="color"/>
         </div>
     </div>
 </template>
@@ -25,6 +25,10 @@ export default {
         value: {
             type: String,
             default: "#fff"
+        },
+        disableAlpha: {
+            type: Boolean,
+            default: false
         }
     },
     components: { "color-picker": ColorPicker },
@@ -35,7 +39,7 @@ export default {
         color: {
             get() { return this.value },
             set(color) {
-                this.$emit("input", color.hex8);
+                this.$emit("input", this.disableAlpha ? color.hex : color.hex8);
             }
         },
         classList() {
